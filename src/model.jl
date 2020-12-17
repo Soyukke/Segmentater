@@ -10,6 +10,7 @@ end
 
 function SegmentationModel()
     k₁ = (32, 32); s₁ = (16, 16);
+    k₂ = (16, 16); s₂ = (8, 8);
     encoder = Chain(
         Conv(k₁, 3 => 3, relu, stride=s₁)
     )
