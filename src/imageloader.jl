@@ -28,3 +28,11 @@ function getdataset(dict, indices)
     matrix = cat(matrixs..., dims=4)
     return matrix
 end
+
+
+"""
+indices DataLoader.
+"""
+function indicesloader(ndata::Integer; batchsize, shuffle=true)
+    return DataLoader(1:ndata, batchsize=batchsize, shuffle=shuffle)
+end
