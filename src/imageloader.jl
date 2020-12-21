@@ -13,7 +13,7 @@ end
 
 """
 get image files by indices of full dataset
-`dict` is index => filename.
+`dict` is `index` => `filename`.
 """
 function getdataset(dict, indices)
     fns = map(indices) do i
@@ -35,4 +35,13 @@ indices DataLoader.
 """
 function indicesloader(ndata::Integer; batchsize, shuffle=true)
     return DataLoader(1:ndata, batchsize=batchsize, shuffle=shuffle)
+end
+
+"""
+get train input data `x` and output `y` data. `indices`
+"""
+function getbatchdata(x_dict, y_dict, indices)
+    x = getdataset(x_dict, indices)
+    y = getdataset(y_dict, indices)
+    return x, y
 end
