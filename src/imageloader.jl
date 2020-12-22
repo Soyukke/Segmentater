@@ -1,4 +1,4 @@
-export img2matrix
+export img2matrix, getbatchdata, indicesloader
 
 """
 RGB image (height, width, 3)
@@ -19,7 +19,7 @@ function getdataset(dict, indices)
     fns = map(indices) do i
         dict[i]
     end
-    matrixs = []
+    matrixs = Array{Float32, 3}[]
     for i in indices
         img = Images.load(fns[i])
         mat = img2matrix(img)
