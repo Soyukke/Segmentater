@@ -2,6 +2,7 @@ module Segmentater
 
 using Flux
 using Images
+using ImageTransformations
 
 using Flux.Data:DataLoader
 
