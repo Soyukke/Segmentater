@@ -10,7 +10,6 @@ function img2matrix(img)
     return float(cat(R, G, B, dims=3))
 end
 
-
 """
 get image files by indices of full dataset
 `dict` is `index` => `filename`.
@@ -29,7 +28,6 @@ function getdataset(dict, indices)
     return matrix
 end
 
-
 """
 indices DataLoader.
 """
@@ -44,4 +42,14 @@ function getbatchdata(x_dict, y_dict, indices)
     x = getdataset(x_dict, indices)
     y = getdataset(y_dict, indices)
     return x, y
+end
+
+"""
+resize image
+(width, height, 3, ndata) -> (xrate*width, yrate*height, 3, ndata)
+"""
+function resize(matrix::Array{Float32, 4}, xrate, yrate)
+    return mapslices(matrix; dims=[1, 2]) do img
+        imresize(img, ratio=(xrate, yrate))
+    end
 end
